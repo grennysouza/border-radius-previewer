@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            border: 2px solid #73AD21;
+            padding: 20px;
+            width: 200px;
+            height: 150px;
+        }
+    </style>
+</head>
+<body onload="setAllRadius()">
+    <input type="number" id="value-top-left" value="10" min="0" onkeydown="setAllRadius()" onchange="setAllRadius()">
+    <input type="number" id="value-top-right" value="10" min="0" onkeydown="setAllRadius()" onchange="setAllRadius()">
+    <div id="box"></div>
+    <input type="number" id="value-bottom-left" value="10" min="0" onkeydown="setAllRadius()" onchange="setAllRadius()">
+    <input type="number" id="value-bottom-right" value="10" min="0" onkeydown="setAllRadius()" onchange="setAllRadius()">
+    <br><textarea rows="4" cols="35" id="style"></textarea>
+    <input type="button" value="Copy style" onclick="copyValues()">
+
+    <script>
+        let box = document.getElementById("box");
+        let textarea = document.getElementById("style");
+
+        function setAllRadius() {
+            let vlTopLeft = document.getElementById("value-top-left").value;
+            let vlTopRight = document.getElementById("value-top-right").value;
+            let vlBottomLeft = document.getElementById("value-bottom-left").value;
+            let vlBottomRight = document.getElementById("value-bottom-right").value;
+
+            box.style.borderTopLeftRadius = vlTopLeft + "px";
+            box.style.borderTopRightRadius = vlTopRight + "px";
+            box.style.borderBottomLeftRadius = vlBottomLeft + "px";
+            box.style.borderBottomRightRadius = vlBottomRight + "px";
+
+            textarea.innerHTML = "border-top-left-radius: " + vlTopLeft+ "px;\n";
+            textarea.innerHTML += "border-top-right-radius: " + vlTopRight + "px;\n";
+            textarea.innerHTML += "border-bottom-left-radius: " + vlBottomLeft + "px;\n";
+            textarea.innerHTML += "border-bottom-right-radius: " + vlBottomRight + "px;";
+        }
+
+        function copyValues() {
+            textarea.select();
+            document.execCommand("copy");
+        }
+
+    </script>
+
+
+</body>
+</html>
