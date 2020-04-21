@@ -5,25 +5,72 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Border Radius Previewer</title>
     <style>
-        #box {
-            border: 2px solid #73AD21;
-            padding: 20px;
-            width: 200px;
-            height: 150px;
+        .center-box {
+            border-radius: 1em;
+            padding: 1em;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%)
         }
+
+        textarea {
+            resize: none;
+        }
+
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+            width: 20%;
+        }
+
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+            width: 20%;
+        }
+
+        .text-right {
+            /* Chrome, Safari, Edge, Opera */
+            text-align: -webkit-right!important;
+
+            /* Firefox */
+            text-align: -moz-right!important;
+        }
+
     </style>
 </head>
 <body onload="setAllRadius()">
-    <input type="number" id="value-top-left" value="10" min="0" onkeydown="setAllRadius()" onchange="setAllRadius()">
-    <input type="number" id="value-top-right" value="10" min="0" onkeydown="setAllRadius()" onchange="setAllRadius()">
-    <div id="box"></div>
-    <input type="number" id="value-bottom-left" value="10" min="0" onkeydown="setAllRadius()" onchange="setAllRadius()">
-    <input type="number" id="value-bottom-right" value="10" min="0" onkeydown="setAllRadius()" onchange="setAllRadius()">
-    <br><textarea rows="4" cols="35" id="style"></textarea>
-    <input type="button" value="Copy style" onclick="copyValues()">
-
+    <div class="container center-box">
+        <div class="row">
+            <div class="col-3 text-right p-0 ">
+                <input type="number" id="value-top-left" value="10" min="0" onkeydown="setAllRadius()" onchange="setAllRadius()" class="form-control">
+            </div>
+            <div class="col-3 offset-6 p-0">
+                <input type="number" id="value-top-right" value="10" min="0" onkeydown="setAllRadius()" onchange="setAllRadius()" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+                <div class="border border-success col-6 offset-3 p-5 text-center" id="box">
+                    <textarea rows="4" cols="34" id="style" class="form-control-plaintext col-7 mx-auto" readonly></textarea>
+                    <input type="button" value="Copy style" onclick="copyValues()" class="btn btn-outline-success">
+                </div>
+        </div>
+        <div class="row">
+            <div class="col-3 text-right p-0">
+                <input type="number" id="value-bottom-left" value="10" min="0" onkeydown="setAllRadius()" onchange="setAllRadius()" class="form-control">
+            </div>
+            <div class="col-3 offset-6 p-0">
+                <input type="number" id="value-bottom-right" value="10" min="0" onkeydown="setAllRadius()" onchange="setAllRadius()" class="form-control">
+            </div>
+        </div>
+    </div>
     <script>
         let box = document.getElementById("box");
         let textarea = document.getElementById("style");
@@ -51,7 +98,6 @@
         }
 
     </script>
-
 
 </body>
 </html>
